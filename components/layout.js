@@ -1,5 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import VisibilityToggle from '../components/signup';
+import HeroSection from '../components/hero';
+import AboutSection from '../components/about';
+import MusicSection from '../components/music';
 import '../styles/styles.sass'
 
 export default ({ children }) => {
@@ -21,10 +25,10 @@ export default ({ children }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
       </Head>
       <header>
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <a className="navbar-item">
-              <img src="/static/pic.png" />
+              <img src="/static/pllogo.png" />
             </a>
             <a id="burger" onClick={toggleStyles} 
                 role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarmenu">
@@ -34,24 +38,40 @@ export default ({ children }) => {
             </a>
           </div>
           <div id="navbarmenu" className="navbar-menu">
-            <div className="navbar-start">
-              <Link prefetch href="/">
-                <a className="navbar-item">Home</a>
-              </Link>
-              <Link prefetch href="/elsewhere">
-                <a className="navbar-item">Elsewhere</a>
-              </Link>
-            </div>
+            
             <div className="navbar-end">
               <div className="navbar-item">
-                <div className="buttons">
-                  <a onClick={() => alert('You clicked the button!')} className="button is-primary">Click</a>
-                </div>
+				<div className="navbar-start">
+					<Link href="#hero">
+						<a className="navbar-item">Home</a>
+					</Link>
+					<Link href="#about">
+						<a className="navbar-item">About</a>
+					</Link>
+					<Link href="#music">
+						<a className="navbar-item">Music</a>
+					</Link>
+						
+				</div>
+                
               </div>
             </div>
           </div>
         </nav>
+		<style jsx>{`
+			.navbar{
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+			}
+		`}</style>
       </header>
+	  <HeroSection />
+	  <AboutSection />
+	  <MusicSection />
+	  
       {children}
       <footer className="footer">
         <div className="content has-text-centered">
